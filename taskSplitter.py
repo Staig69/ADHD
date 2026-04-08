@@ -10,7 +10,7 @@ def split_tasks(task_description: str):
     """
     Разбивает задачу на подзадачи по 30 минут, используя официальный SDK.
     """
-    # Отключаем проверку SSL (только для разработки!)
+    # Отключаем проверку SSL
     ssl._create_default_https_context = ssl._create_unverified_context
 
     with GigaChat(
