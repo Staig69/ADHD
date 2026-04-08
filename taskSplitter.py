@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 def split_tasks(task_description: str):
     load_dotenv()
     """
-    Разбивает задачу на подзадачи по 30 минут, используя официальный SDK.
+    Разбивает задачу на подзадачи по 30 минут
     """
     # Отключаем проверку SSL
     ssl._create_default_https_context = ssl._create_unverified_context
