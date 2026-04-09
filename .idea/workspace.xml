@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e620e147-df7e-4ad8-ad51-d3b1017f7abb" name="Changes" comment="Testing upload">
+    <list default="true" id="e620e147-df7e-4ad8-ad51-d3b1017f7abb" name="Changes" comment="Testing upload with directory">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,9 +57,15 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "masha",
+    "last_opened_file_path": "C:/Users/mary/PycharmProjects/ADHD2/block_structure",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mary\PycharmProjects\ADHD2\block_structure" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -91,7 +97,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775729641181</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Testing upload with directory">
+      <option name="closed" value="true" />
+      <created>1775731197635</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775731197635</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +133,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Testing upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing upload" />
+    <MESSAGE value="Testing upload with directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing upload with directory" />
   </component>
 </project>

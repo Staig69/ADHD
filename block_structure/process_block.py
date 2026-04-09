@@ -8,3 +8,4 @@ def kill_apps():
                 proc.kill()
             except:
                 pass
+    time.sleep(1)

@@ -23,7 +23,5 @@ def redirect_browser():
                     pyautogui.press('f6')
                     pyautogui.hotkey('shift', 'insert')
                     pyautogui.press('enter')
-
-                    print(f"Пользователь отправлен учиться: {window.title}")
                 except Exception as e:
                     print(f"Ошибка: {e}")
