@@ -22,5 +22,6 @@ def redirect_browser():
                     time.sleep(0.1)
                     keyboard.write(REDIRECT_URL)
                     keyboard.press_and_release('enter')
+                    time.sleep(2.0)
                 except Exception as e:
                     print(f"Ошибка: {e}")
