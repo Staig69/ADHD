@@ -21,6 +21,8 @@ def redirect_browser():
                     pyperclip.copy(REDIRECT_URL)
 
                     pyautogui.press('f6')
+                    time.sleep(0.1)
+
                     pyautogui.hotkey('shift', 'insert')
                     pyautogui.press('enter')
                 except Exception as e:
