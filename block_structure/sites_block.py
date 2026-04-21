@@ -1,6 +1,5 @@
 import pygetwindow as gw
-import pyautogui
-import pyperclip
+import keyboard
 import time
 from block_structure.config import BLOCK_SITES, REDIRECT_URL
 
@@ -16,14 +15,15 @@ def redirect_browser():
             if any(b in window.title for b in ["Chrome", "Firefox", "Edge", "Opera"]):
                 try:
                     window.activate()
-                    time.sleep(0.5)
+                    time.sleep(0.3)
+                    window.activate()
+                    time.sleep(0.2)
 
-                    pyperclip.copy(REDIRECT_URL)
-
-                    pyautogui.press('f6')
+                    # Использование горячих клавиш по скан-кодам (не зависит от языка)
+                    # 29 = Ctrl, 38 = L, 47 = V
+                    keyboard.press_and_release('ctrl+l')
                     time.sleep(0.1)
-
-                    pyautogui.hotkey('shift', 'insert')
-                    pyautogui.press('enter')
+                    keyboard.write(REDIRECT_URL)  # write вводит текст напрямую, игнорируя раскладку!
+                    keyboard.press_and_release('enter')
                 except Exception as e:
                     print(f"Ошибка: {e}")
