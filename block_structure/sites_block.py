@@ -15,8 +15,6 @@ def redirect_browser():
             if any(b in window.title for b in ["Chrome", "Firefox", "Edge", "Opera"]):
                 try:
                     window.activate()
-                    time.sleep(0.3)
-                    window.activate()
                     time.sleep(0.2)
 
 
