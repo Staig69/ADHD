@@ -2,7 +2,7 @@ import pygetwindow as gw
 import pyautogui
 import pyperclip
 import time
-from config import BLOCK_SITES, REDIRECT_URL
+from block_structure.config import BLOCK_SITES, REDIRECT_URL
 
 
 def redirect_browser():
