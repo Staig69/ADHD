@@ -19,11 +19,10 @@ def redirect_browser():
                     window.activate()
                     time.sleep(0.2)
 
-                    # Использование горячих клавиш по скан-кодам (не зависит от языка)
-                    # 29 = Ctrl, 38 = L, 47 = V
+
                     keyboard.press_and_release('ctrl+l')
                     time.sleep(0.1)
-                    keyboard.write(REDIRECT_URL)  # write вводит текст напрямую, игнорируя раскладку!
+                    keyboard.write(REDIRECT_URL)
                     keyboard.press_and_release('enter')
                 except Exception as e:
                     print(f"Ошибка: {e}")
