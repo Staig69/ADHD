@@ -1,8 +1,7 @@
 import pygetwindow as gw
-import pyautogui
-import pyperclip
+import keyboard
 import time
-from config import BLOCK_SITES, REDIRECT_URL
+from block_structure.config import BLOCK_SITES, REDIRECT_URL
 
 
 def redirect_browser():
@@ -16,14 +15,13 @@ def redirect_browser():
             if any(b in window.title for b in ["Chrome", "Firefox", "Edge", "Opera"]):
                 try:
                     window.activate()
-                    time.sleep(0.5)
+                    time.sleep(0.2)
 
-                    pyperclip.copy(REDIRECT_URL)
 
-                    pyautogui.press('f6')
-                    pyautogui.hotkey('shift', 'insert')
-                    pyautogui.press('enter')
-
-                    print(f"Пользователь отправлен учиться: {window.title}")
+                    keyboard.press_and_release('ctrl+l')
+                    time.sleep(0.1)
+                    keyboard.write(REDIRECT_URL)
+                    keyboard.press_and_release('enter')
+                    time.sleep(2.0)
                 except Exception as e:
                     print(f"Ошибка: {e}")
