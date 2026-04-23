@@ -15,8 +15,8 @@ class Timer:
         time_work - время в работы в минутах
         time_break - время отдыха в минутах
         """
-        self.work_duration = time_work * 60
-        self.break_duration = time_break * 60
+        self.work_duration = time_work * 60  # работа в секундах
+        self.break_duration = time_break * 60  # отдых в секундах
         self.is_working = False
         self.is_running = False
         self.timer_thread = None
