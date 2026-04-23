@@ -24,13 +24,13 @@ QMainWindow {
     background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #82d172, stop:1 #d7f2cb);
 }
 
-/* 2. ТЕКСТ */
+/* 2. ТЕКСТ (Жирный и коричневый) */
 QLabel {
     color: #3d2500;
     font-weight: bold;
 }
 
-/* 3. БЕЛОЕ ПОЛЕ */
+/* 3. БЕЛОЕ ПОЛЕ (Scroll Area) */
 QScrollArea {
     background-color: white;
     border-radius: 45px;
@@ -80,7 +80,7 @@ QPushButton#btn_generate:hover {
     background-color: #366100;
 }
 
-/* 6. КНОПКА НАЗАД */
+/* 6. КНОПКА &quot;НАЗАД&quot; */
 QPushButton#btn_back {
     background-color: #82D172;
     border: 2px solid #3D2500;
@@ -119,12 +119,12 @@ QScrollBar::handle:vertical {
 QLabel#title_label {
     color: #3d2500;
     font-weight: bold;
-    font-size: 32px;
-    qproperty-alignment: 'AlignCenter';
+    font-size: 32px; /* Сделал покрупнее для названия */
+    qproperty-alignment: 'AlignCenter'; /* Выравнивание текста строго по центру */
     background: transparent;
 }
 
-/* 10. КНОПКА НАЧАТЬ РАБОТУ */
+/* 10. КНОПКА &quot;НАЧАТЬ РАБОТУ&quot; */
 QPushButton#btn_start_app {
     background-color: #d7f2cb;
     border: 2px solid #3d2500;
@@ -140,7 +140,7 @@ QPushButton#btn_start_app {
     padding-right: 0px;
 }
 
-/* (на тон темнее) */
+/* Эффект при наведении на кнопку старта (на тон темнее) */
 QPushButton#btn_start_app:hover {
     background-color: #bedbb1;
 }</string>
@@ -150,7 +150,7 @@ QPushButton#btn_start_app:hover {
     <item>
      <widget class="QStackedWidget" name="screen_manager">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="title_page">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -333,6 +333,48 @@ QPushButton#btn_start_app:hover {
              </property>
             </widget>
            </item>
+           <item>
+            <spacer name="horizontalSpacer_17">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_16">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>0</width>
+               <height>18</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Советуем для начала попробовать интервалы:
+20 минут работы - 5 минут отдыха
+30 минут работы - 10 минут отдыха
+45 минут работы - 15 минут отдыха</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
@@ -360,7 +402,7 @@ QPushButton#btn_start_app:hover {
           <property name="frameShadow">
            <enum>QFrame::Shadow::Raised</enum>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <layout class="QHBoxLayout" name="horizontalLayout_15">
            <item>
             <widget class="QScrollArea" name="task_scroll_area">
              <property name="sizePolicy">
@@ -383,13 +425,60 @@ QPushButton#btn_start_app:hover {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>843</width>
+                <width>347</width>
                 <height>500</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="tasks_layout"/>
              </widget>
             </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_15">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QLineEdit" name="input_work"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>Для начала продуктивной фокус-сессии
+необходимо установить время, которое вы
+проведете за работой и отдыхом.
+Вводите время в минутах и подумайте,
+какое время оптимально для выполнения
+вашей первой подзадачи
+(максимальное, которое вы можеет установить - это 99 минут):</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="input_break"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string>Теперь выберите время для отдыха
+(минимальное время. которое вы можете установить - это 1 минута)</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -472,162 +561,6 @@ QPushButton#btn_start_app:hover {
            </item>
           </layout>
          </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page">
-       <layout class="QVBoxLayout" name="verticalLayout_15">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_13"/>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Policy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>100</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_8"/>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_8">
-            <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Policy::Minimum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_16">
-            <item>
-             <widget class="QSlider" name="sld_work">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="lbl_work_val">
-              <property name="text">
-               <string>время работы</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_9">
-            <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Policy::Minimum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_10">
-            <item>
-             <widget class="QSlider" name="sld_break">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="lbl_break_val">
-              <property name="text">
-               <string>время отдыха</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_10">
-            <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Policy::Minimum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_12"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Policy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>100</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_12">
-          <item>
-           <widget class="QPushButton" name="btn_start_focus_session">
-            <property name="text">
-             <string>PushButton</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </item>
        </layout>
       </widget>

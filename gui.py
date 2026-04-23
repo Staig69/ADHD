@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QLabel
 from PySide6.QtCore import QTimer, Qt
-from PySide6.QtGui import QFontDatabase
+from PySide6.QtGui import QFontDatabase, QIntValidator  # Не забываем импорт валидатора!
 from PySide6.QtUiTools import QUiLoader
 
 from backend import ADHD_Backend
@@ -9,7 +9,7 @@ from backend import ADHD_Backend
 
 class MatchaApp:
     def __init__(self):
-
+        # 1. Шрифты
         font_path = "Intro.otf"
         QFontDatabase.addApplicationFont(font_path)
 
@@ -18,43 +18,42 @@ class MatchaApp:
         self.ui = loader.load("focus.ui")
         self.ui.setWindowTitle("Green Focus App ૮꒰ ˶• ༝ •˶꒱ა")
 
-        # 0 индекс - начальный экран
+        # Индекс 0 - начальный экран
         self.ui.screen_manager.setCurrentIndex(0)
 
-        # подсоединение к логике таймера
+        # 3. Инициализация бэкенда
         self.engine = ADHD_Backend()
         self.current_task_index = 0
         self.time_left = 0
         self.is_break = False
 
-        # собственный таймер gui
+        # Собственный таймер GUI
         self.timer = QTimer(self.ui)
         self.timer.timeout.connect(self.hidden_timer_tick)
 
-        # кнопка на начальном экране кидает на экран формирования подзадач
+        # 4. Настройка валидаторов времени
+        self.time_validator = QIntValidator(1, 99, self.ui)
+
+        self.ui.input_work.setValidator(self.time_validator)
+        self.ui.input_break.setValidator(self.time_validator)
+
+        self.ui.input_work.setText("25")
+        self.ui.input_break.setText("5")
+
+        # 5. ПРИВЯЗКА КНОПОК
+        # Экран 0: Кнопка старта
         self.ui.btn_start_app.clicked.connect(lambda: self.ui.screen_manager.setCurrentIndex(1))
 
-        # зеленая кнопка со стрелкой - генерация задач
-        self.ui.btn_generate.clicked.connect(self.generate_tasks)
-        # 2 индекс - страница со слайдерами
-        # 0 индекс - кнопка отправляет на титульную страницу
-        self.ui.btn_start_focus.clicked.connect(lambda: self.ui.screen_manager.setCurrentIndex(2))
+        # Экран 1: Генерация и Настройки
         self.ui.btn_back.clicked.connect(lambda: self.ui.screen_manager.setCurrentIndex(0))
+        self.ui.btn_generate.clicked.connect(self.generate_tasks)
 
-        # обновление текста при движении слайдеров
-        self.ui.sld_work.valueChanged.connect(self.update_slider_labels)
-        self.ui.sld_break.valueChanged.connect(self.update_slider_labels)
-        # старт логики
-        self.ui.btn_start_focus_session.clicked.connect(self.start_focus_session)
-        # кнопка на экране фокуса, ведет обратно на страницу с нейронкой
+        # Кнопка старта фокуса (ведет на экран 2). Изначально отключена, пока нет задач.
+        self.ui.btn_start_focus.clicked.connect(self.start_focus_session)
+        self.ui.btn_start_focus.setEnabled(False)
+
+        # Экран 2: Фокус
         self.ui.btn_stop_focus.clicked.connect(self.stop_focus_session)
-
-    def update_slider_labels(self):
-        # апдейт слайдеров
-        w = self.ui.sld_work.value()
-        b = self.ui.sld_break.value()
-        self.ui.lbl_work_val.setText(f"Время работы: {w} мин")
-        self.ui.lbl_break_val.setText(f"Время отдыха: {b} мин")
 
     def clear_tasks_layout(self):
         while self.ui.tasks_layout.count():
@@ -64,8 +63,15 @@ class MatchaApp:
 
     def generate_tasks(self):
         user_text = self.ui.task_input.text()
-        if not user_text.strip(): return
+        if not user_text.strip():
+            return
 
+        work_str = self.ui.input_work.text()
+        break_str = self.ui.input_break.text()
+        work_mins = int(work_str) if work_str else 25
+        break_mins = int(break_str) if break_str else 5
+
+        # Отключаем кнопку, чтобы не накликали
         self.ui.btn_generate.setEnabled(False)
         self.clear_tasks_layout()
 
@@ -74,8 +80,9 @@ class MatchaApp:
         self.ui.tasks_layout.addWidget(temp_lbl)
         QApplication.processEvents()
 
-        success, tasks = self.engine.generate_initial_plan(user_text, self.ui.sld_work.value(),
-                                                           self.ui.sld_break.value())
+        # Передаем всё в бэкенд
+        success, tasks = self.engine.generate_initial_plan(user_text, work_mins, break_mins)
+        print(work_mins, break_mins)
 
         self.clear_tasks_layout()
         if success:
@@ -83,31 +90,34 @@ class MatchaApp:
                 lbl = QLabel(f"• {task}")
                 lbl.setWordWrap(True)
                 self.ui.tasks_layout.addWidget(lbl)
-            # только когда есть задачи, то можем переходить к странице времени
+
+            # Включаем кнопку старта только при успешной генерации
             self.ui.btn_start_focus.setEnabled(True)
             self.current_task_index = 0
         else:
-            self.ui.tasks_layout.addWidget(QLabel("Ошибка генерации..."))
+            self.ui.tasks_layout.addWidget(QLabel("Ошибка генерации... Попробуйте еще раз."))
 
         self.ui.btn_generate.setEnabled(True)
 
     def start_focus_session(self):
+        # Еще раз забираем значения на случай, если пользователь изменил их ПОСЛЕ генерации
+        work_str = self.ui.input_work.text()
+        break_str = self.ui.input_break.text()
 
-        self.engine.work_duration = self.ui.sld_work.value()
-        self.engine.break_duration = self.ui.sld_break.value()
+        self.engine.work_duration = int(work_str) if work_str else 25
+        self.engine.break_duration = int(break_str) if break_str else 5
 
         self.current_task_index = 0
         self.is_break = False
         self.time_left = self.engine.work_duration
 
-        # запуск основных процессов
-        self.ui.screen_manager.setCurrentIndex(3)
+        # Запуск основных процессов и переход на экран 2
+        self.ui.screen_manager.setCurrentIndex(2)
         self.update_status_ui()
         self.timer.start(1000)
         self.engine.start_blocking()
 
     def hidden_timer_tick(self):
-        # управление внутренним таймером
         if self.time_left > 0:
             self.time_left -= 1
         else:
@@ -127,15 +137,16 @@ class MatchaApp:
         self.update_status_ui()
 
     def update_status_ui(self):
-
         mins, secs = divmod(self.time_left, 60)
         time_str = f"{mins:02d}:{secs:02d}"
 
         if self.is_break:
             status = f"ВРЕМЯ ОТДЫХА\n{time_str}"
         else:
-            task = self.engine.subtasks_list[self.current_task_index] if self.current_task_index < len(
-                self.engine.subtasks_list) else "..."
+            if self.current_task_index < len(self.engine.subtasks_list):
+                task = self.engine.subtasks_list[self.current_task_index]
+            else:
+                task = "..."
             status = f"В ФОКУСЕ:\n{task}\n\n⏱ {time_str}"
 
         self.ui.lbl_timer_display.setText(status)
@@ -143,6 +154,7 @@ class MatchaApp:
     def stop_focus_session(self):
         self.timer.stop()
         self.engine.stop_blocking()
+        # Возвращаемся на экран 1
         self.ui.screen_manager.setCurrentIndex(1)
 
     def finish_app(self):
