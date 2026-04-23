@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QLabel
 from PySide6.QtCore import QTimer, Qt
-from PySide6.QtGui import QFontDatabase, QIntValidator  # Не забываем импорт валидатора!
+from PySide6.QtGui import QFontDatabase, QIntValidator
 from PySide6.QtUiTools import QUiLoader
 
 from backend import ADHD_Backend
