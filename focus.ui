@@ -150,7 +150,7 @@ QPushButton#btn_start_app:hover {
     <item>
      <widget class="QStackedWidget" name="screen_manager">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="title_page">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -174,6 +174,13 @@ QPushButton#btn_start_app:hover {
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
            <widget class="QLabel" name="title_name">
+            <property name="font">
+             <font>
+              <family>Intro Demo CAPS</family>
+              <pointsize>48</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Green Focus App</string>
             </property>
@@ -425,29 +432,13 @@ QPushButton#btn_start_app:hover {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>347</width>
+                <width>393</width>
                 <height>500</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="tasks_layout"/>
              </widget>
             </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_15">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Policy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -570,6 +561,19 @@ QPushButton#btn_start_app:hover {
          <layout class="QVBoxLayout" name="verticalLayout_9">
           <item>
            <widget class="QLabel" name="lbl_timer_display">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Intro Demo CAPS</family>
+              <pointsize>48</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>

@@ -37,8 +37,15 @@ class MatchaApp:
         self.ui.input_work.setValidator(self.time_validator)
         self.ui.input_break.setValidator(self.time_validator)
 
+        self.ui.input_work.setAlignment(Qt.AlignCenter)
+        self.ui.input_break.setAlignment(Qt.AlignCenter)
+
         self.ui.input_work.setText("25")
         self.ui.input_break.setText("5")
+
+        self.ui.label_9.setAlignment(Qt.AlignCenter)
+        self.ui.label_8.setAlignment(Qt.AlignCenter)
+        self.ui.title_name.setAlignment(Qt.AlignCenter)
 
         # 5. ПРИВЯЗКА КНОПОК
         # Экран 0: Кнопка старта
