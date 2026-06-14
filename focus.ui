@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>899</width>
+    <width>1380</width>
     <height>874</height>
    </rect>
   </property>
@@ -54,7 +54,6 @@ QPushButton {
     text-align: right;
     padding-right: 40px;
     padding-left: 20px;
-    /* На всякий случай дублируем шрифт здесь */
     font-family: &quot;Intro Demo CAPS&quot;;
 }
 
@@ -115,12 +114,13 @@ QScrollBar::handle:vertical {
     background: #82d172;
     border-radius: 4px;
 }
+
 /* 9. ЗАГОЛОВОК НА СТАРТОВОМ ЭКРАНЕ */
 QLabel#title_label {
     color: #3d2500;
     font-weight: bold;
-    font-size: 32px; /* Сделал покрупнее для названия */
-    qproperty-alignment: 'AlignCenter'; /* Выравнивание текста строго по центру */
+    font-size: 32px;
+    qproperty-alignment: 'AlignCenter';
     background: transparent;
 }
 
@@ -136,21 +136,117 @@ QPushButton#btn_start_app {
     max-height: 70px;
     min-width: 250px;
     max-width: 250px;
-    text-align: center; /* Текст на этой кнопке лучше по центру */
+    text-align: center;
     padding-right: 0px;
 }
 
-/* Эффект при наведении на кнопку старта (на тон темнее) */
 QPushButton#btn_start_app:hover {
     background-color: #bedbb1;
-}</string>
+}
+
+/* 11. КНОПКА СОХРАНЕНИЯ ВРЕМЕНИ */
+QPushButton#btn_save_time {
+    background-color: #82D172;
+    border: 2px solid #3D2500;
+    color: #3D2500;
+    border-radius: 35px;
+}
+
+/* 12. ЗАГОЛОВКИ */
+QLabel#lbl_title_time {
+    color: #3d2500;
+    font-weight: bold;
+    font-size: 32px;
+    qproperty-alignment: 'AlignCenter';
+    background: transparent;
+}
+
+QLabel#lbl_title {
+    color: #3d2500;
+    font-weight: bold;
+    font-size: 32px;
+    qproperty-alignment: 'AlignCenter';
+    background: transparent;
+}
+
+/* 13. КНОПКА ПОДСКАЗКИ */
+QPushButton#btn_hint {
+    text-align: center;
+}
+
+/* 14. ЗАГОЛОВОК ИМЕНИ */
+QLabel#title_name {
+    qproperty-alignment: 'AlignCenter';
+    font-size: 48px;
+    font-weight: bold;
+}
+
+/* 15. КНОПКА ОСТАНОВКИ ФОКУСА */
+QPushButton#btn_stop_focus {
+    text-align: center;
+}
+
+/* 17. ПОДПИСИ */
+QLabel#label_2, QLabel#label_3 {
+    qproperty-alignment: 'AlignCenter';
+}
+
+/* Основной фон списка (эффект полупрозрачного стекла) */
+QListWidget {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px solid #eaffe1;
+            border-radius: 15px;
+            padding: 10px;
+            font-size: 15px;
+            color: #3d2500;
+            outline: none;
+        }
+        QListWidget::item {
+            background-color: #f7fdf4;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+        QListWidget::item:hover {
+            background-color: #e6f9dd; /* Нежно-зеленый при наведении */
+            color: #3d2500;
+        }
+        QListWidget::item:selected {
+            background-color: #bfecac; /* Акцентный зеленый при клике */
+            color: #3d2500;
+            font-weight: bold;
+            border: 1px solid #a3d98d;
+        }
+        QScrollBar:vertical {
+            border: none;
+            background: transparent;
+            width: 10px;
+            margin: 10px 0px 10px 0px;
+        }
+        QScrollBar::handle:vertical {
+            background-color: #a3d98d; /* Зеленый ползунок */
+            min-height: 30px;
+            border-radius: 5px;
+        }
+        QScrollBar::handle:vertical:hover {
+            background-color: #8bc371; /* Чуть более темный зеленый при наведении на ползунок */
+        }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+            height: 0px;
+        }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_14">
     <item>
      <widget class="QStackedWidget" name="screen_manager">
+      <property name="font">
+       <font>
+        <family>Intro Demo CAPS</family>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>8</number>
       </property>
       <widget class="QWidget" name="title_page">
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -177,7 +273,7 @@ QPushButton#btn_start_app:hover {
             <property name="font">
              <font>
               <family>Intro Demo CAPS</family>
-              <pointsize>48</pointsize>
+              <pointsize>-1</pointsize>
               <bold>true</bold>
              </font>
             </property>
@@ -246,6 +342,98 @@ QPushButton#btn_start_app:hover {
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="page_2">
+       <layout class="QVBoxLayout" name="verticalLayout_9">
+        <item>
+         <widget class="QLabel" name="label_mine_title">
+          <property name="font">
+           <font>
+            <family>Intro Demo CAPS</family>
+            <pointsize>24</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::RightToLeft</enum>
+          </property>
+          <property name="text">
+           <string>Green Focus APP</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QListWidget" name="tasks_list_widget"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_open_config">
+            <property name="text">
+             <string>Настройки</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_generate_new">
+            <property name="text">
+             <string>Приступить к выполнению новой задачи!</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <widget class="QPushButton" name="btn_to_menu">
+            <property name="text">
+             <string>&lt;-Все задачи</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_task_title">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_time_info">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QListWidget" name="subtasks_list_widget"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_12">
+          <item>
+           <widget class="QPushButton" name="btn_change_time">
+            <property name="text">
+             <string>изменить время работы</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_continue_focus">
+            <property name="text">
+             <string>продолжть</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="main_page">
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -285,7 +473,7 @@ QPushButton#btn_start_app:hover {
              <property name="font">
               <font>
                <family>Intro Demo CAPS</family>
-               <pointsize>20</pointsize>
+               <pointsize>-1</pointsize>
                <bold>true</bold>
               </font>
              </property>
@@ -318,8 +506,8 @@ QPushButton#btn_start_app:hover {
              <property name="inputMask">
               <string/>
              </property>
-             <property name="text">
-              <string notr="true"/>
+             <property name="placeholderText">
+              <string>Введите вашу задачу...</string>
              </property>
             </widget>
            </item>
@@ -355,32 +543,6 @@ QPushButton#btn_start_app:hover {
               </size>
              </property>
             </spacer>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_16">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Policy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>0</width>
-               <height>18</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_7">
-             <property name="text">
-              <string>Советуем для начала попробовать интервалы:
-20 минут работы - 5 минут отдыха
-30 минут работы - 10 минут отдыха
-45 минут работы - 15 минут отдыха</string>
-             </property>
-            </widget>
            </item>
           </layout>
          </widget>
@@ -432,44 +594,13 @@ QPushButton#btn_start_app:hover {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>393</width>
+                <width>1324</width>
                 <height>500</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="tasks_layout"/>
              </widget>
             </widget>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_2">
-             <item>
-              <widget class="QLineEdit" name="input_work"/>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_9">
-               <property name="text">
-                <string>Для начала продуктивной фокус-сессии
-необходимо установить время, которое вы
-проведете за работой и отдыхом.
-Вводите время в минутах и подумайте,
-какое время оптимально для выполнения
-вашей первой подзадачи
-(максимальное, которое вы можеет установить - это 99 минут):</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="input_break"/>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_8">
-               <property name="text">
-                <string>Теперь выберите время для отдыха
-(минимальное время. которое вы можете установить - это 1 минута)</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
            </item>
           </layout>
          </widget>
@@ -484,21 +615,17 @@ QPushButton#btn_start_app:hover {
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QPushButton" name="btn_mode">
+            <widget class="QPushButton" name="btn_regenerate">
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
-             <property name="layoutDirection">
-              <enum>Qt::LayoutDirection::LeftToRight</enum>
-             </property>
              <property name="text">
-              <string>Выбран: усложненный режим
-сменить режим на: упрощенный</string>
+              <string>Перегенерировать план</string>
              </property>
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer_2">
+            <spacer name="horizontalSpacer_18">
              <property name="orientation">
               <enum>Qt::Orientation::Horizontal</enum>
              </property>
@@ -514,13 +641,12 @@ QPushButton#btn_start_app:hover {
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="btn_asistant">
+            <widget class="QPushButton" name="btn_open_time_settings">
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="text">
-              <string>Ваш ассистент
-сменить ассистента</string>
+              <string>Изменить время</string>
              </property>
             </widget>
            </item>
@@ -555,10 +681,210 @@ QPushButton#btn_start_app:hover {
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="page">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QFrame" name="frame_6">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QFrame" name="frame_8">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <item>
+               <widget class="QPushButton" name="btn_save_time">
+                <property name="text">
+                 <string>⭠ К генерации задач</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_8">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="lbl_title_time">
+                <property name="text">
+                 <string>Green Focus App</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_9">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_10">
+                <item>
+                 <widget class="QLineEdit" name="input_work">
+                  <property name="layoutDirection">
+                   <enum>Qt::LayoutDirection::LeftToRight</enum>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Время работы (минуты)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_3">
+                  <property name="font">
+                   <font>
+                    <family>Intro Demo CAPS</family>
+                    <pointsize>16</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Выберите время, которое вы будете проводить за
+работой. Вы можете ввести любое целое количество
+минут от 1 до 99.</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="input_break">
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Время отдыха (минуты)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_2">
+                  <property name="font">
+                   <font>
+                    <family>Intro Demo CAPS</family>
+                    <pointsize>16</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Выберите время, которое вы будете проводить
+отдыхая. Вы можете ввести любое целое количество
+минут от 1 до 99.</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_10">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>200</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_9">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Expanding</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_11">
+                <item>
+                 <widget class="QPushButton" name="btn_hint">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>Какое время лучше всего поставить для работы?</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::TextFormat::AutoText</enum>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap>img/time_photo.png</pixmap>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="focus_page">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_9">
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
            <widget class="QLabel" name="lbl_timer_display">
             <property name="sizePolicy">
@@ -570,12 +896,34 @@ QPushButton#btn_start_app:hover {
             <property name="font">
              <font>
               <family>Intro Demo CAPS</family>
-              <pointsize>48</pointsize>
+              <pointsize>40</pointsize>
               <bold>true</bold>
              </font>
             </property>
             <property name="text">
-             <string>TextLabel</string>
+             <string>В ФОКУСЕ</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap>img/focus_photo.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -622,7 +970,7 @@ QPushButton#btn_start_app:hover {
            <item>
             <widget class="QPushButton" name="btn_stop_focus">
              <property name="text">
-              <string>Принудительно завершить фокусировку</string>
+              <string>⭠ Принудительно завершить фокусировку</string>
              </property>
             </widget>
            </item>
@@ -640,6 +988,274 @@ QPushButton#btn_start_app:hover {
             </spacer>
            </item>
           </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <layout class="QVBoxLayout" name="verticalLayout_24">
+        <item>
+         <widget class="QLabel" name="label_task_time_title">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Intro Demo CAPS</family>
+            <pointsize>24</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>green focus app</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <item>
+           <widget class="QFrame" name="frame_13">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_21">
+             <item>
+              <widget class="QLineEdit" name="input_task_work_time"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>новое время работы</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="input_task_break_time"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_8">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>новое время отдыха</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Policy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_back_from_time_settings">
+            <property name="text">
+             <string>&lt;- сохранить время и вернуться</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <layout class="QVBoxLayout" name="verticalLayout_17">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_15">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="font">
+             <font>
+              <family>Intro Demo CAPS</family>
+              <pointsize>24</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Настройки приложения</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_mode">
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <item>
+           <widget class="QFrame" name="frame_7">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_18">
+             <item>
+              <widget class="QListWidget" name="listview_sites"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_sites_count">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_back_from_config">
+               <property name="text">
+                <string>Назад</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_10">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_16">
+             <item>
+              <widget class="QListWidget" name="listview_apps"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_apps_count">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_add_to_config">
+               <property name="text">
+                <string>добавить запреты</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_6">
+       <layout class="QVBoxLayout" name="verticalLayout_22">
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Intro Demo CAPS</family>
+            <pointsize>24</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Настройки запретов                                                                              GREEN FOCUS APP</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <widget class="QFrame" name="frame_11">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_20">
+             <item>
+              <widget class="QLineEdit" name="input_new_site"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_add_site">
+               <property name="text">
+                <string>Добавить новый сайт в запреты</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_12">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_19">
+             <item>
+              <widget class="QLineEdit" name="input_new_app"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_add_app">
+               <property name="text">
+                <string>Добавить новый процесс в запреты</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_back_from_add">
+          <property name="text">
+           <string>&lt;- к запретам</string>
+          </property>
          </widget>
         </item>
        </layout>

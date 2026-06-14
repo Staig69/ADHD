@@ -1,0 +1,23 @@
+{
+  "mode": [
+    "hard"
+  ],
+  "apps": [
+    "Telegram.exe",
+    "Discord.exe",
+    "STEAM.EXE"
+  ],
+  "sites": [
+    "YouTube",
+    "ВКонтакте",
+    "Лента новостей",
+    "Wildberries",
+    "Ozon",
+    "Reddit",
+    "WhatsApp",
+    "Мессенджер",
+    "deepseek"
+  ],
+  "check_interval": 2,
+  "warning_cooldown": 60
+}

@@ -1,4 +1,6 @@
 .env
-.idea/
-.testApp.py
-
+.venv/
+venv/
+ENV/
+.idea
+green_focus.db
