@@ -1,1 +1,6 @@
 .env
+.venv/
+venv/
+ENV/
+.idea
+green_focus.db
